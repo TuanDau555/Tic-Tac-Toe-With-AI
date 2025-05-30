@@ -41,3 +41,6 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Placing
+    uniqueID: 3022769211
+    locked: 0
