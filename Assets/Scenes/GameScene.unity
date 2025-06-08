@@ -483,6 +483,7 @@ GameObject:
   - component: {fileID: 357032651}
   - component: {fileID: 357032650}
   - component: {fileID: 357032649}
+  - component: {fileID: 357032652}
   m_Layer: 5
   m_Name: Middle
   m_TagString: Untagged
@@ -553,13 +554,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1114164045}
-        m_TargetAssemblyTypeName: BoardManager, Assembly-CSharp
-        m_MethodName: SetPlayerSpace
-        m_Mode: 2
+      - m_Target: {fileID: 357032652}
+        m_TargetAssemblyTypeName: Cell, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 357032649}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -603,6 +604,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 357032647}
   m_CullTransparentMesh: 1
+--- !u!114 &357032652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 357032647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1222085fd482f84a8b6e7147d161639, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  row: 1
+  column: 1
+  button: {fileID: 357032649}
 --- !u!1 &473645183
 GameObject:
   m_ObjectHideFlags: 0
@@ -1124,6 +1140,7 @@ GameObject:
   - component: {fileID: 640258174}
   - component: {fileID: 640258173}
   - component: {fileID: 640258172}
+  - component: {fileID: 640258175}
   m_Layer: 5
   m_Name: Bottom Middle
   m_TagString: Untagged
@@ -1194,13 +1211,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1114164045}
-        m_TargetAssemblyTypeName: BoardManager, Assembly-CSharp
-        m_MethodName: SetPlayerSpace
-        m_Mode: 2
+      - m_Target: {fileID: 640258175}
+        m_TargetAssemblyTypeName: Cell, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 640258172}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1244,6 +1261,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 640258170}
   m_CullTransparentMesh: 1
+--- !u!114 &640258175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 640258170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1222085fd482f84a8b6e7147d161639, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  row: 2
+  column: 1
+  button: {fileID: 640258172}
 --- !u!1 &667548983
 GameObject:
   m_ObjectHideFlags: 0
@@ -1474,6 +1506,7 @@ GameObject:
   - component: {fileID: 816866681}
   - component: {fileID: 816866680}
   - component: {fileID: 816866679}
+  - component: {fileID: 816866682}
   m_Layer: 5
   m_Name: Middle Right
   m_TagString: Untagged
@@ -1544,13 +1577,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1114164045}
-        m_TargetAssemblyTypeName: BoardManager, Assembly-CSharp
-        m_MethodName: SetPlayerSpace
-        m_Mode: 2
+      - m_Target: {fileID: 816866682}
+        m_TargetAssemblyTypeName: Cell, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 816866679}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1594,6 +1627,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 816866677}
   m_CullTransparentMesh: 1
+--- !u!114 &816866682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 816866677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1222085fd482f84a8b6e7147d161639, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  row: 1
+  column: 2
+  button: {fileID: 816866679}
 --- !u!1 &834354930
 GameObject:
   m_ObjectHideFlags: 0
@@ -1787,6 +1835,7 @@ GameObject:
   - component: {fileID: 1082003184}
   - component: {fileID: 1082003183}
   - component: {fileID: 1082003182}
+  - component: {fileID: 1082003185}
   m_Layer: 5
   m_Name: Top Left
   m_TagString: Untagged
@@ -1857,13 +1906,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1114164045}
-        m_TargetAssemblyTypeName: BoardManager, Assembly-CSharp
-        m_MethodName: SetPlayerSpace
-        m_Mode: 2
+      - m_Target: {fileID: 1082003185}
+        m_TargetAssemblyTypeName: Cell, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 1082003182}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1907,6 +1956,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1082003180}
   m_CullTransparentMesh: 1
+--- !u!114 &1082003185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1082003180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1222085fd482f84a8b6e7147d161639, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  row: 0
+  column: 0
+  button: {fileID: 1082003182}
 --- !u!1 &1114164044
 GameObject:
   m_ObjectHideFlags: 0
@@ -1936,6 +2000,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 861096dba58cc9a4d9c77dee1df86d4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boardSize: 3
   playerSpaceSprite: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
   AISpaceSprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!4 &1114164046
@@ -2064,6 +2129,7 @@ GameObject:
   - component: {fileID: 1309506539}
   - component: {fileID: 1309506538}
   - component: {fileID: 1309506537}
+  - component: {fileID: 1309506540}
   m_Layer: 5
   m_Name: Bottom Right
   m_TagString: Untagged
@@ -2134,13 +2200,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1114164045}
-        m_TargetAssemblyTypeName: BoardManager, Assembly-CSharp
-        m_MethodName: SetPlayerSpace
-        m_Mode: 2
+      - m_Target: {fileID: 1309506540}
+        m_TargetAssemblyTypeName: Cell, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 1309506537}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2184,6 +2250,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1309506535}
   m_CullTransparentMesh: 1
+--- !u!114 &1309506540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1309506535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1222085fd482f84a8b6e7147d161639, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  row: 2
+  column: 2
+  button: {fileID: 1309506537}
 --- !u!1 &1357582582
 GameObject:
   m_ObjectHideFlags: 0
@@ -2227,6 +2308,7 @@ GameObject:
   - component: {fileID: 1370420297}
   - component: {fileID: 1370420296}
   - component: {fileID: 1370420295}
+  - component: {fileID: 1370420298}
   m_Layer: 5
   m_Name: Bottom Left
   m_TagString: Untagged
@@ -2297,13 +2379,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1114164045}
-        m_TargetAssemblyTypeName: BoardManager, Assembly-CSharp
-        m_MethodName: SetPlayerSpace
-        m_Mode: 2
+      - m_Target: {fileID: 1370420298}
+        m_TargetAssemblyTypeName: Cell, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 1370420295}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2347,6 +2429,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1370420293}
   m_CullTransparentMesh: 1
+--- !u!114 &1370420298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1370420293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1222085fd482f84a8b6e7147d161639, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  row: 2
+  column: 0
+  button: {fileID: 1370420295}
 --- !u!1 &1402886699
 GameObject:
   m_ObjectHideFlags: 0
@@ -2390,6 +2487,7 @@ GameObject:
   - component: {fileID: 1496175936}
   - component: {fileID: 1496175935}
   - component: {fileID: 1496175934}
+  - component: {fileID: 1496175937}
   m_Layer: 5
   m_Name: Top Right
   m_TagString: Untagged
@@ -2460,13 +2558,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1114164045}
-        m_TargetAssemblyTypeName: BoardManager, Assembly-CSharp
-        m_MethodName: SetPlayerSpace
-        m_Mode: 2
+      - m_Target: {fileID: 1496175937}
+        m_TargetAssemblyTypeName: Cell, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 1496175934}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2510,6 +2608,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1496175932}
   m_CullTransparentMesh: 1
+--- !u!114 &1496175937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1496175932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1222085fd482f84a8b6e7147d161639, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  row: 0
+  column: 2
+  button: {fileID: 1496175934}
 --- !u!1 &1664344183
 GameObject:
   m_ObjectHideFlags: 0
@@ -2702,6 +2815,7 @@ GameObject:
   - component: {fileID: 1787136165}
   - component: {fileID: 1787136164}
   - component: {fileID: 1787136163}
+  - component: {fileID: 1787136166}
   m_Layer: 5
   m_Name: Top Middle
   m_TagString: Untagged
@@ -2772,13 +2886,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1114164045}
-        m_TargetAssemblyTypeName: BoardManager, Assembly-CSharp
-        m_MethodName: SetPlayerSpace
-        m_Mode: 2
+      - m_Target: {fileID: 1787136166}
+        m_TargetAssemblyTypeName: Cell, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 1787136163}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2822,6 +2936,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1787136161}
   m_CullTransparentMesh: 1
+--- !u!114 &1787136166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1787136161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1222085fd482f84a8b6e7147d161639, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  row: 0
+  column: 1
+  button: {fileID: 1787136163}
 --- !u!1 &1896170495
 GameObject:
   m_ObjectHideFlags: 0
@@ -2916,6 +3045,7 @@ GameObject:
   - component: {fileID: 2139560537}
   - component: {fileID: 2139560536}
   - component: {fileID: 2139560535}
+  - component: {fileID: 2139560538}
   m_Layer: 5
   m_Name: Middle Left
   m_TagString: Untagged
@@ -2986,13 +3116,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1114164045}
-        m_TargetAssemblyTypeName: BoardManager, Assembly-CSharp
-        m_MethodName: SetPlayerSpace
-        m_Mode: 2
+      - m_Target: {fileID: 2139560538}
+        m_TargetAssemblyTypeName: Cell, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 2139560535}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -3036,6 +3166,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2139560533}
   m_CullTransparentMesh: 1
+--- !u!114 &2139560538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2139560533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1222085fd482f84a8b6e7147d161639, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  row: 1
+  column: 0
+  button: {fileID: 2139560535}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
