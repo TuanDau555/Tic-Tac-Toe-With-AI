@@ -12,18 +12,23 @@ public class BoardManager : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// When player clicks on a button
+    /// this method is called to set the player's space.
+    /// If it's the player's turn, it sets the player's sprite,
+    /// otherwise it sets the AI's sprite.
+    /// Disables the button to prevent multiple clicks.
+    /// </summary>
     public void SetPlayerSpace(Button placingButton)
     {
-        // When player cick makde sure it disable 
-        // so they can't click it multiple time
         if (GameManager.Instance.currentTurnState == TurnState.XTurn)
         {
             btnImage = placingButton.image;
             placingButton.interactable = false;
             btnImage.sprite = playerSpaceSprite;
             btnImage.enabled = true;
-            Debug.Log("Player space set");
             GameManager.Instance.currentTurnState = TurnState.OTurn;
+            Debug.Log("Player space set");
         }
 
         else
@@ -32,8 +37,8 @@ public class BoardManager : MonoBehaviour
             placingButton.interactable = false;
             btnImage.sprite = AISpaceSprite;
             btnImage.enabled = true;
-            Debug.Log("Player space set");
             GameManager.Instance.currentTurnState = TurnState.XTurn;
+            Debug.Log("Player space set");
         }
     }
 
