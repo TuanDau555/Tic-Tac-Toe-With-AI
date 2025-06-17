@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 
@@ -11,6 +12,11 @@ public enum TurnState
 public class GameManager : Singleton<GameManager>
 {
     public TurnState currentTurnState;
+
+    internal void ShowResult(string v)
+    {
+        throw new NotImplementedException();
+    }
 
     void Start()
     {

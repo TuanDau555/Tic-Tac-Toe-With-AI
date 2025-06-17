@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
-
+using TMPro;
 public class BoardManager : Singleton<BoardManager>
 {
     #region Parameters
@@ -15,6 +15,8 @@ public class BoardManager : Singleton<BoardManager>
     [SerializeField] private Sprite AISpaceSprite;
 
     private Image btnImage;
+    private bool gameOver;
+    private object resultText;
     #endregion
 
     #region Main Methods
@@ -51,19 +53,39 @@ public class BoardManager : Singleton<BoardManager>
 
         boardSpaces[row, column] = currentPlayer; // Update the board state
 
-        if (CheckForWinner(row, column, currentPlayer))
+        if (CheckForWinner(row, column, currentPlayer)) 
         {
             Debug.Log((currentPlayer == 1 ? "Player X" : "Player 0") + " win!");
+            gameOver = true;
+        }
+        else if (Draw())
+        {
+            GameManager.Instance.ShowResult("Game over, Draw");
+            gameOver = true;
         }
 
         else
+        {
+
+        }
         {
             Debug.Log("No winner Found game continues");
             GameManager.Instance.currentTurnState =
                 (currentPlayer == 1) ? TurnState.OTurn : TurnState.XTurn;
         }
     }
-
+    bool Draw()
+    {
+        for (int i = 0; i < boardSpaces.GetLength(0); i++)
+        {
+            for (int j = 0; j <  boardSpaces.GetLength(1); j++)
+            {
+                if (boardSpaces[i , j] == 0) 
+                    return false;
+            }
+        }
+        return true;
+    }
     private void SetAISpace()
     {
 
