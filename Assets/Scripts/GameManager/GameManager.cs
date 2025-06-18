@@ -1,23 +1,7 @@
+
+using System;
 using UnityEngine;
-
-
-public enum TurnState
-{
-    XTurn,
-    OTurn,
-    GameOver
-}
-{
-    public TurnState currentTurnState;
-
-    void Start()
-    {
-        currentTurnState = TurnState.XTurn;
-    }
-}
-// Giả sử file GameManager.cs của bạn có dạng như thế này
-// Hãy đảm bảo bạn có biến isGameOver
-using UnityEngine;
+using UnityEngine.UI;
 
 public enum TurnState
 {
