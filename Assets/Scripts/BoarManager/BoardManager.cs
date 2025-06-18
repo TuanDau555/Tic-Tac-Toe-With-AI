@@ -81,7 +81,7 @@ public class BoardManager : Singleton<BoardManager>
    
 
     private int turnCount = 0; // Đếm số lượt đã đi để xác định hòa
-    private bool isGameOver = false; // Biến để kiểm tra trạng thái game
+    private bool GameOver = false; // Biến để kiểm tra trạng thái game
     private string winnerMessage = ""; // Biến để lưu thông điệp người thắng
 
     void Start()
@@ -97,11 +97,11 @@ public class BoardManager : Singleton<BoardManager>
         menuButton.onClick.AddListener(GoToMainMenu);
     }
 
-    // Đoạn code bạn cung cấp đã được sửa đổi
+    
     public void SetPlayerSpace(Button placingButton)
     {
         // <<< THAY ĐỔI: Kiểm tra bằng cờ isGameOver thay vì kiểm tra panel
-        if (!isGameOver)
+        if (!GameOver)
         {
             Image btnImage = placingButton.image;
             placingButton.interactable = false;
@@ -152,7 +152,7 @@ public class BoardManager : Singleton<BoardManager>
         }
 
         // <<< THAY ĐỔI: Nếu hòa, cũng gọi StopGame()
-        if (turnCount >= boardSize * boardSize && !isGameOver)
+        if (turnCount >= boardSize * boardSize && !GameOver)
         {
             winnerMessage = "Hòa!";
             StopGame();
@@ -178,7 +178,7 @@ public class BoardManager : Singleton<BoardManager>
     // <<< THAY ĐỔI: Hàm mới chỉ để dừng game
     private void StopGame()
     {
-        isGameOver = true;
+        GameOver = true;
         // Vô hiệu hóa tất cả các nút trên bàn cờ
         for (int i = 0; i < spaceButtons.Length; i++)
         {
@@ -191,7 +191,7 @@ public class BoardManager : Singleton<BoardManager>
     public void ShowResultPopup()
     {
         // Chỉ hiện popup nếu game đã kết thúc
-        if (isGameOver)
+        if (GameOver)
         {
             victoryMessageText.text = winnerMessage;
             victoryPanel.SetActive(true);
@@ -203,7 +203,7 @@ public class BoardManager : Singleton<BoardManager>
     public void ResetGame()
     {
         // <<< THAY ĐỔI: Reset lại các cờ trạng thái
-        isGameOver = false;
+        GameOver = false;
         winnerMessage = "";
 
         GameManager.Instance.currentTurnState = TurnState.XTurn;
