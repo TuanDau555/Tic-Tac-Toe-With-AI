@@ -1,10 +1,8 @@
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement; // Cần thiết để quản lý Scene (chuyển về menu)
 
 public class BoardManager : Singleton<BoardManager>
 {
-<<<<<<< Updated upstream
     #region Parameters
     [Header("Board Settings")]
     [Tooltip("The size of the board, e.g., 3 for a 3x3 grid.")]
@@ -27,7 +25,8 @@ public class BoardManager : Singleton<BoardManager>
     }
 
     #endregion
-       #region Placing X and O 
+
+    #region Placing X and O 
     /// <summary>
     /// /// When player clicks on a button
     /// this method is called to set the player's space.
@@ -55,6 +54,12 @@ public class BoardManager : Singleton<BoardManager>
         if (CheckForWinner(row, column, currentPlayer))
         {
             Debug.Log((currentPlayer == 1 ? "Player X" : "Player 0") + " win!");
+            GameManager.Instance.currenTurnState = TurnState.GameOver
+                  Button[] allButtons = FindObjectsOfType<Button>();
+            foreach (Button btn in allButtons)
+            {
+                btn.interactable = false;
+            }
         }
 
         else
@@ -62,166 +67,12 @@ public class BoardManager : Singleton<BoardManager>
             Debug.Log("No winner Found game continues");
             GameManager.Instance.currentTurnState =
                 (currentPlayer == 1) ? TurnState.OTurn : TurnState.XTurn;
-=======
-    [Header("Game Settings")]
-    [SerializeField] private int boardSize = 3; // Kích thước bàn cờ (ví dụ: 3 cho 3x3, 4 cho 4x4)
-    [SerializeField] private int winConditionLength = 3; // Số ký hiệu liên tiếp để thắng
-
-    [Header("Sprites & Board")]
-    [SerializeField] private Sprite playerSpaceSprite; // Sprite của người chơi (X)
-    [SerializeField] private Sprite AISpaceSprite;     // Sprite của máy (O)
-    [SerializeField] private Button[] spaceButtons;    // Mảng chứa 9 nút trên bàn cờ
-   
-
-    [Header("Victory Popup UI")]
-    [SerializeField] private GameObject victoryPanel;      // Panel thông báo thắng/thua
-    [SerializeField] private Text victoryMessageText;  // Text để hiển thị ai thắng
-    [SerializeField] private Button playAgainButton;     // Nút chơi lại
-    [SerializeField] private Button menuButton;        // Nút trở về menu
-   
-
-    private int turnCount = 0; // Đếm số lượt đã đi để xác định hòa
-    private bool GameOver = false; // Biến để kiểm tra trạng thái game
-    private string winnerMessage = ""; // Biến để lưu thông điệp người thắng
-
-    void Start()
-    {
-        if (spaceButtons.Length != boardSize * boardSize)
-        {
-            Debug.LogError("Số lượng Button không khớp với boardSize!");
-            return;
-        }
-
-        victoryPanel.SetActive(false);
-        playAgainButton.onClick.AddListener(ResetGame);
-        menuButton.onClick.AddListener(GoToMainMenu);
-    }
-
-    
-    public void SetPlayerSpace(Button placingButton)
-    {
-        // <<< THAY ĐỔI: Kiểm tra bằng cờ isGameOver thay vì kiểm tra panel
-        if (!GameOver)
-        {
-            Image btnImage = placingButton.image;
-            placingButton.interactable = false;
-            turnCount++;
-
-            if (GameManager.Instance.currentTurnState == TurnState.XTurn)
-            {
-                btnImage.sprite = playerSpaceSprite;
-                GameManager.Instance.currentTurnState = TurnState.OTurn;
-            }
-            else
-            {
-                btnImage.sprite = AISpaceSprite;
-                GameManager.Instance.currentTurnState = TurnState.XTurn;
-            }
-
-            btnImage.enabled = true;
-
-            // Kiểm tra điều kiện thắng sau mỗi lượt đi
-            CheckForWinner();
->>>>>>> Stashed changes
         }
     }
+
     private void SetAISpace()
-    { }
-    private void CheckForWinner()
     {
-        Sprite[,] grid = new Sprite[boardSize, boardSize];
-        for (int i = 0; i < spaceButtons.Length; i++)
-        {
-            int row = i / boardSize;
-            int col = i % boardSize;
-            grid[row, col] = spaceButtons[i].image.enabled ? spaceButtons[i].image.sprite : null;
-        }
 
-        for (int row = 0; row < boardSize; row++)
-        {
-            for (int col = 0; col < boardSize; col++)
-            {
-                Sprite currentSprite = grid[row, col];
-                if (currentSprite == null) continue;
-
-                if (col <= boardSize - winConditionLength && CheckLine(grid, currentSprite, row, col, 0, 1)) return;
-                if (row <= boardSize - winConditionLength && CheckLine(grid, currentSprite, row, col, 1, 0)) return;
-                if (row <= boardSize - winConditionLength && col <= boardSize - winConditionLength && CheckLine(grid, currentSprite, row, col, 1, 1)) return;
-                if (row <= boardSize - winConditionLength && col >= winConditionLength - 1 && CheckLine(grid, currentSprite, row, col, 1, -1)) return;
-            }
-        }
-
-        // <<< THAY ĐỔI: Nếu hòa, cũng gọi StopGame()
-        if (turnCount >= boardSize * boardSize && !GameOver)
-        {
-            winnerMessage = "Hòa!";
-            StopGame();
-        }
-    }
-
-    private bool CheckLine(Sprite[,] grid, Sprite spriteToMatch, int startRow, int startCol, int deltaRow, int deltaCol)
-    {
-        for (int i = 1; i < winConditionLength; i++)
-        {
-            if (grid[startRow + i * deltaRow, startCol + i * deltaCol] != spriteToMatch)
-            {
-                return false;
-            }
-        }
-
-        // <<< THAY ĐỔI: Khi thắng, không gọi EndGame mà lưu message và gọi StopGame
-        winnerMessage = (spriteToMatch == playerSpaceSprite) ? "Người chơi (X) thắng!" : "Máy (O) thắng!";
-        StopGame();
-        return true;
-    }
-
-    // <<< THAY ĐỔI: Hàm mới chỉ để dừng game
-    private void StopGame()
-    {
-        GameOver = true;
-        // Vô hiệu hóa tất cả các nút trên bàn cờ
-        for (int i = 0; i < spaceButtons.Length; i++)
-        {
-            spaceButtons[i].interactable = false;
-        }
-        Debug.Log("Game đã kết thúc! " + winnerMessage);
-    }
-
-    // <<< THAY ĐỔI: Hàm mới, public, để hiện popup, sẽ được gọi bởi một nút bấm
-    public void ShowResultPopup()
-    {
-        // Chỉ hiện popup nếu game đã kết thúc
-        if (GameOver)
-        {
-            victoryMessageText.text = winnerMessage;
-            victoryPanel.SetActive(true);
-        }
-    }
-
-    // Hàm EndGame cũ không còn cần thiết, chúng ta đã tách nó thành StopGame và ShowResultPopup
-
-    public void ResetGame()
-    {
-        // <<< THAY ĐỔI: Reset lại các cờ trạng thái
-        GameOver = false;
-        winnerMessage = "";
-
-        GameManager.Instance.currentTurnState = TurnState.XTurn;
-        turnCount = 0;
-
-        for (int i = 0; i < spaceButtons.Length; i++)
-        {
-            spaceButtons[i].interactable = true;
-            spaceButtons[i].image.sprite = null;
-            spaceButtons[i].image.enabled = false;
-        }
-
-        victoryPanel.SetActive(false);
-    }
-
-    public void GoToMainMenu()
-    {
-        SceneManager.LoadScene("MainMenuScene");
     }
     #endregion
 
@@ -304,5 +155,3 @@ public class BoardManager : Singleton<BoardManager>
     }
     #endregion
 }
-
-
