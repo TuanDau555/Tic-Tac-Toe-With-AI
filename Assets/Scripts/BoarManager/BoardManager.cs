@@ -54,12 +54,8 @@ public class BoardManager : Singleton<BoardManager>
         if (CheckForWinner(row, column, currentPlayer))
         {
             Debug.Log((currentPlayer == 1 ? "Player X" : "Player 0") + " win!");
-            GameManager.Instance.currenTurnState = TurnState.GameOver
-                  Button[] allButtons = FindObjectsOfType<Button>();
-            foreach (Button btn in allButtons)
-            {
-                btn.interactable = false;
-            }
+            GameManager.Instance.currenTurnState = TurnState.GameOver;
+               
         }
 
         else
