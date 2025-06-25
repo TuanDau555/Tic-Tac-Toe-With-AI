@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 
@@ -54,18 +55,18 @@ public class GameManager : Singleton<GameManager>
     }
     #endregion
 
-    #region Game Over
+    #region Game Over Announce
 
     private void AnnounceWinner(int playerWin)
     {
         if (playerWin == 1)
         {
-            resultText = "You Win!";
+            resultText = "X Win!";
             GameOverUI.Instance.ShowGameOver(resultText, Color.green);
         }
         else
         {
-            resultText = "You Lose!";
+            resultText = "O Win!";
             GameOverUI.Instance.ShowGameOver(resultText, Color.red);
         }
     }
@@ -75,6 +76,45 @@ public class GameManager : Singleton<GameManager>
         resultText = "Tie!";
         GameOverUI.Instance.ShowGameOver(resultText, Color.yellow);
     }
+    #endregion
+
+    #region Rematch
+
+    /// <summary>
+    /// This function is call when Rematch button is clicked
+    /// </summary>
+    public void OnRematchClick()
+    {
+        StartRematch();
+    }
+
+    private void StartRematch()
+    {
+        // Reset the logic
+        // Loop the all the row and column...
+        for (int row = 0; row < BoardManager.Instance.boardSize; row++)
+        {
+            for (int column = 0; column < BoardManager.Instance.boardSize; column++)
+            {
+                //... and reset it to default
+                // 0 means empty cell not occupied or belonging to any player
+                BoardManager.Instance.boardCells[row, column] = 0;
+            }
+        }
+
+        // After we reset the logic we need to reset the UI also
+        BoardManager.Instance.ResetBoard();
+
+        // Update All states again
+        UpdateState(TurnState.XTurn);
+        turnCount = 0; // remember to reset the turn count also
+
+        // And lastly Hide the UI
+        GameOverUI.Instance.Hide();
+        
+
+    }
+
     #endregion
 
     #region Win Condition
@@ -126,8 +166,8 @@ public class GameManager : Singleton<GameManager>
     /// </summary>
     /// <param name="row">Start Row</param>
     /// <param name="column">Start Column</param>
-    /// <param name="directionRow">Step Beloning to Row (eg 1,-1,0)</param>
-    /// <param name="directionColumn">Step Beloning to Column (eg 1,-1,0)</param>
+    /// <param name="directionRow">Step belonging to Row (eg 1,-1,0)</param>
+    /// <param name="directionColumn">Step Belonging to Column (eg 1,-1,0)</param>
     /// <param name="player">1 for X and 2 for O</param>
     /// <returns>Consecutive cells that found</returns>
     private int CountDirection(int row, int column, int directionRow, int directionColumn, int player)
@@ -143,7 +183,7 @@ public class GameManager : Singleton<GameManager>
             if (newRow < 0 || newRow >= BoardManager.Instance.boardSize || newColumn < 0 || newColumn >= BoardManager.Instance.boardSize)
                 break; // Out of bounds check
 
-            // Check if the cells at (newRow, newColumn) is beloning to Player 1 or 2
+            // Check if the cells at (newRow, newColumn) is belonging to Player 1 or 2
             // Eg: (!,2) currentPlayer == 1 -> count = 1 for Player 1 at cell (1,2) 
             if (BoardManager.Instance.boardCells[newRow, newColumn] == player)
                 count++;

@@ -8,13 +8,51 @@ using UnityEngine.UI;
 
 public class Cell : MonoBehaviour
 {
-    [SerializeField] private int row;
-    [SerializeField] private int column;
-    [SerializeField] private Button button;
+    public int row;
+    public int column;
+    private Button button;
+
+    void Awake()
+    {
+        button = GetComponent<Button>();
+    }
+
+    void OnEnable()
+    {
+        button.onClick.AddListener(OnClick);
+    }
+
+    void OnDisable()
+    {
+        button.onClick.RemoveListener(OnClick);
+    }
 
     public void OnClick()
     {
-        BoardManager.Instance.SetPlayerSpace(button, row, column); 
+        if (BoardManager.Instance != null && GameManager.Instance != null)
+        {
+            BoardManager.Instance.SetPlayerCell(row, column);
+        }
+    }
+
+    /// <summary>
+    /// Set the Sprite of the cell
+    /// </summary>
+    /// <param name="sprite">Appropriate Sprite of that Cell when click</param>
+    public void SetSprite(Sprite sprite)
+    {
+        button.image.sprite = sprite;
+        button.image.enabled = true;
+        button.interactable = false;
+    }
+
+    /// <summary>
+    /// Reset image and button can click again
+    /// </summary>
+    public void ResetCell()
+    {
+        button.interactable = true;
+        button.image.sprite = null;
     }
 
 }

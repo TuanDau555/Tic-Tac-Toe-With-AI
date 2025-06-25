@@ -24,7 +24,7 @@ public class GameOverUI : Singleton<GameOverUI>
         Show();
     }
 
-    private void Show()
+    public void Show()
     {
         gameNotify.SetActive(true);
     }
