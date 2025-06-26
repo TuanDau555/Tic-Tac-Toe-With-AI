@@ -45,9 +45,10 @@ public class BoardManager : Singleton<BoardManager>
         PlacingCell(row, column, currentPlayer);
     }
 
-    private void SetAICell()
+    public void SetAICell(int row, int column)
     {
-
+        int currentPlayer = 2;
+        PlacingCell(row, column, currentPlayer);
     }
 
     /// <summary>

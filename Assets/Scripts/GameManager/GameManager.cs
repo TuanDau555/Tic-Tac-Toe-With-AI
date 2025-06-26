@@ -1,6 +1,6 @@
 using System;
+using System.Collections;
 using UnityEngine;
-
 
 public enum TurnState
 {
@@ -9,11 +9,23 @@ public enum TurnState
     GameOver
 }
 
+public enum GameMode
+{
+    PVP,
+    PVE
+}
+
 public class GameManager : Singleton<GameManager>
 {
+    #region Variable
+    [Tooltip("Which Type of Player is playing")]
     public TurnState currentTurnState;
+    [Tooltip("PVP: PlayerVsPlayer; PVE: PlayerVsAI")]
+    public GameMode currentMode = GameMode.PVP;
+
     private int turnCount;
     private string resultText;
+    #endregion
 
     #region Main Method
     void Start()
@@ -29,7 +41,7 @@ public class GameManager : Singleton<GameManager>
         turnCount++;
 
         // Win
-        if (CheckForWinner(row, column, currentPlayer))
+        if (CheckForWinnerPlayer(row, column, currentPlayer))
         {
             AnnounceWinner(currentPlayer);
             UpdateState(TurnState.GameOver);
@@ -52,6 +64,28 @@ public class GameManager : Singleton<GameManager>
     private void UpdateState(TurnState newState)
     {
         currentTurnState = newState;
+        if (currentMode == GameMode.PVE && newState == TurnState.OTurn)
+        {
+            StartCoroutine(PlayAITurn());
+        }
+    }
+    #endregion
+
+    #region Player With AI
+    private IEnumerator PlayAITurn()
+    {
+        yield return new WaitForSeconds(0.5f);
+
+        int[,] boardCells = BoardManager.Instance.boardCells;
+        int size = BoardManager.Instance.boardSize;
+
+        // Get Ai best move
+        Vector2Int aiMove = AIPlayer.GetBestMove(boardCells, size, size >= 5 ? 3 : 9);
+
+        if (aiMove.x >= 0 && aiMove.y >= 0)
+        {
+            BoardManager.Instance.SetAICell(aiMove.x, aiMove.y);
+        }
     }
     #endregion
 
@@ -111,7 +145,7 @@ public class GameManager : Singleton<GameManager>
 
         // And lastly Hide the UI
         GameOverUI.Instance.Hide();
-        
+
 
     }
 
@@ -128,7 +162,7 @@ public class GameManager : Singleton<GameManager>
     /// <param name="column">Column of current cell just click (0-based index)</param>
     /// <param name="player">1 for X and 2 for O</param>
     /// <returns>True if Someone Win, else None win</returns>
-    private bool CheckForWinner(int row, int column, int player)
+    private bool CheckForWinnerPlayer(int row, int column, int player)
     {
         Debug.Log("Is Checking Winner");
 
@@ -179,7 +213,7 @@ public class GameManager : Singleton<GameManager>
         {
             int newRow = row + directionRow * i; // Calculate the new row index
             int newColumn = column + directionColumn * i; // Calculate the new column index 
-            
+
             if (newRow < 0 || newRow >= BoardManager.Instance.boardSize || newColumn < 0 || newColumn >= BoardManager.Instance.boardSize)
                 break; // Out of bounds check
 
