@@ -90,18 +90,18 @@ public class GameManager : Singleton<GameManager>
         {
             if (BoardManager.Instance.boardCells[aiMove.x, aiMove.y] == 0)
             {
-                Debug.Log($"[AI] Đánh tại vị trí ({aiMove.x}, {aiMove.y})");
+                Debug.Log($"[AI] play at ({aiMove.x}, {aiMove.y})");
                 BoardManager.Instance.SetAICell(aiMove.x, aiMove.y);
             }
             else
             {
-                Debug.LogError($"[AI] Lỗi: Vị trí ({aiMove.x}, {aiMove.y}) đã có quân!");
+                Debug.LogError($"[AI] Error at ({aiMove.x}, {aiMove.y}) already played!");
                 FindAndPlayFallbackMove();
             }
         }
         else
         {
-            Debug.LogError("[AI] Không tìm được nước đi hợp lệ!");
+            Debug.LogError("[AI] Not found valid move!");
             FindAndPlayFallbackMove();
         }
     }
