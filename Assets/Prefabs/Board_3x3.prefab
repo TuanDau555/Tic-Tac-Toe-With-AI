@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 731606935503393277}
   - component: {fileID: 7065542760540013764}
   m_Layer: 5
-  m_Name: 3x3 Table
+  m_Name: Board_3x3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

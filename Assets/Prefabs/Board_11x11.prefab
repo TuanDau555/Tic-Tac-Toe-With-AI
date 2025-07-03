@@ -12209,7 +12209,7 @@ GameObject:
   - component: {fileID: 8431382783450000540}
   - component: {fileID: 1309917860663564552}
   m_Layer: 5
-  m_Name: 11x11 Table
+  m_Name: Board_11x11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
