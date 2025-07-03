@@ -27,6 +27,7 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] private int turnCount;
     [SerializeField] private float aiThinkingTime = 0.3f;
     private string resultText;
+    internal int boardSize;
     #endregion
 
     #region Main Method

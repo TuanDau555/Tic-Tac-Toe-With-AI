@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/GameScene AI.unity
     guid: 37568fbec2f1c1743a37ae9bb9447221
   - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: 5eff3069fad4fd64ba59f299b7236006
+  - enabled: 1
     path: Assets/Scenes/GameScene.unity
     guid: 3fc8acdd13e6c734bafef6554d6fdbcd
   m_configObjects:
