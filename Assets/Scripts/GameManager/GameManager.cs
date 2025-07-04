@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 
@@ -12,7 +11,8 @@ public enum TurnState
 public enum GameMode
 {
     PVP,
-    PVE
+    PVE,
+    NONE
 }
 
 public class GameManager : Singleton<GameManager>
@@ -32,15 +32,16 @@ public class GameManager : Singleton<GameManager>
     #region Main Method
     void Start()
     {
+        currentMode = GameModeChose.selectedGameMode; // data send from Main Menu
         currentTurnState = TurnState.XTurn;
-        pointToWin = BoardManager.Instance.boardSize >= 5 ? 5 : 3;
+        pointToWin = GameModeChose.selectedBoardSize >= 5 ? 5 : 3;
     }
     #endregion
 
     #region Turn Process
     public void ProcessTurn(int row, int column, int currentPlayer)
     {
-        
+        turnCount++;
         // Win
         if (CheckForWinnerPlayer(row, column, currentPlayer))
         {
@@ -49,7 +50,7 @@ public class GameManager : Singleton<GameManager>
             return;
         }
         // Draw
-        else if (turnCount >= BoardManager.Instance.boardSize * BoardManager.Instance.boardSize)
+        else if (turnCount >= GameModeChose.selectedBoardSize * GameModeChose.selectedBoardSize)
         {
             AnnounceDraw();
             UpdateState(TurnState.GameOver);
@@ -60,7 +61,6 @@ public class GameManager : Singleton<GameManager>
         {
             TurnState nextTurn = (currentPlayer == 1) ? TurnState.OTurn : TurnState.XTurn;
             UpdateState(nextTurn);
-            turnCount++;
         }
     }
 

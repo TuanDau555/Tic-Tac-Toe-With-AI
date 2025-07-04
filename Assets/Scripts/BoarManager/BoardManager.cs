@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+
 public class BoardManager : Singleton<BoardManager>
 {
     #region Parameters
@@ -12,10 +13,14 @@ public class BoardManager : Singleton<BoardManager>
     [HideInInspector] public int playerLastCol = -1;
 
     [Space(10)]
+    [Header("Board Configuration")]
+    [SerializeField] private BoardConfigure boardConfigure;
+
+    [Space(10)]
     [Header("UI Elements")]
     [SerializeField] private Sprite playerCellSprite;
     [SerializeField] private Sprite AICellSprite;
-    
+
     // Cache for better performance
     private Cell[] allCells;
     #endregion
@@ -23,12 +28,33 @@ public class BoardManager : Singleton<BoardManager>
     #region Main Methods
     void Start()
     {
-        // Initialize the board spaces array based on the board size
-        boardCells = new int[boardSize, boardSize];
-        
+        GeneratedTable();
+     
         // Cache all cells for better performance
         allCells = FindObjectsOfType<Cell>();
-        
+
+    }
+    #endregion
+
+    #region Generated table
+    private void GeneratedTable()
+    {
+        boardSize = GameModeChose.selectedBoardSize; // Data send from Main Menu
+        // Initialize the board spaces array based on the board size
+        boardCells = new int[boardSize, boardSize];
+
+        // Get the prefab for the board size
+        GameObject prefab = boardConfigure.GetBoardPrefabs(boardSize);
+        if (prefab != null)
+        {
+            // after get prefab, instantiate it
+            // Set the parent to this transform to keep hierarchy organized
+            Instantiate(prefab, transform);
+        }
+        else
+        {
+            Debug.LogError("Not found Table");
+        }
         Debug.Log($"Board initialized with size {boardSize}x{boardSize}");
     }
     #endregion
@@ -95,7 +121,7 @@ public class BoardManager : Singleton<BoardManager>
     {
         // Update board state
         boardCells[row, column] = currentPlayer;
-        
+
         // Update visual representation
         PlacingSprite(row, column, currentPlayer);
 
@@ -132,7 +158,7 @@ public class BoardManager : Singleton<BoardManager>
                 return; // Exit once we find the correct cell
             }
         }
-        
+
         Debug.LogError($"Could not find cell at position ({row},{column})");
     }
     #endregion
@@ -156,7 +182,7 @@ public class BoardManager : Singleton<BoardManager>
         }
         return count;
     }
-    
+
     /// <summary>
     /// Validates if a move is legal
     /// </summary>
@@ -213,6 +239,6 @@ public class BoardManager : Singleton<BoardManager>
 
         Debug.Log("Board reset completed");
     }
-    
+
     #endregion
 }
