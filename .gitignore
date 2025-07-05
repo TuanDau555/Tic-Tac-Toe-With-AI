@@ -64,6 +64,50 @@ sysinfo.txt
 *.unitypackage.meta
 *.app
 
+# Ignore image files
+*.jpg
+*.jpeg
+*.png
+*.gif
+*.bmp
+*.tiff
+*.svg
+*.webp
+*.ico
+*.psd
+*.ai
+*.eps
+*.jfif
+*.heic
+*.raw
+
+# Ignore audio files
+*.mp3
+*.wav
+*.ogg
+*.flac
+*.aac
+*.wma
+*.m4a
+*.aiff
+*.alac
+*.opus
+*.amr
+*.mid
+*.midi
+
+# Ignore font files
+*.ttf
+*.otf
+*.woff
+*.woff2
+*.eot
+*.pfb
+*.pfm
+*.fon
+*.fnt
+*.svgz
+
 # Crashlytics generated file
 crashlytics-build.properties
 
