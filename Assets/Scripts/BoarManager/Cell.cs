@@ -11,6 +11,7 @@ public class Cell : MonoBehaviour
     public int row;
     public int column;
     private Button button;
+    [SerializeField] private Sprite defaultImage;
 
     void Awake()
     {
@@ -43,7 +44,6 @@ public class Cell : MonoBehaviour
     {
         button.image.sprite = sprite;
         button.image.enabled = true;
-        button.interactable = false;
     }
 
     /// <summary>
@@ -52,7 +52,7 @@ public class Cell : MonoBehaviour
     public void ResetCell()
     {
         button.interactable = true;
-        button.image.sprite = null;
+        button.image.sprite = defaultImage;
     }
 
 }
