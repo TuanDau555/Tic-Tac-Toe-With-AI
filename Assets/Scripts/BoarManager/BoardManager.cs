@@ -75,8 +75,10 @@ public class BoardManager : Singleton<BoardManager>
             return;
         }
 
-        // Only allow player moves during player's turn
-        if (GameManager.Instance.currentTurnState != TurnState.XTurn && GameManager.Instance.currentMode == GameMode.PVE)
+        // Only allow player moves during player's turn, and not when game is over
+        if (GameManager.Instance.currentTurnState != TurnState.XTurn
+            && GameManager.Instance.currentMode == GameMode.PVE
+            && GameManager.Instance.currentTurnState == TurnState.GameOver)
         {
             Debug.LogWarning("Not player's turn");
             return;
