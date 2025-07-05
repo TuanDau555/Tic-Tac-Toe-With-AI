@@ -16,8 +16,8 @@ public class AIPlayer
     #region Variables
     // Heuristic and algorithm constants
     private const int k_winScore = 100000;
-    private const int k_almostWinScore = 10001;
-    private const int k_threeInRowScore = 10000;
+    private const int k_almostWinScore = 10101;
+    private const int k_threeInRowScore = 10099;
     private const int k_TwoInRowScore = 301;
     private const int k_CenterBonus = 39;
     private const int k_positiveInfinity = 1000000;
@@ -212,7 +212,7 @@ public class AIPlayer
     }
     #endregion
 
-    #region Heuristic Functions
+    #region Heuristic Calculation
     // Heuristic evaluation for a direction from a given cell
     private static int EvaluateDirection(int[,] board, int boardSize, int row, int col,
                                        int dirRow, int dirCol, int player, int pointToWin)
@@ -260,30 +260,34 @@ public class AIPlayer
     // Calculates the heuristic score for a line of pieces
     private static int CalculateScore(int count, bool leftOpen, bool rightOpen, int pointToWin)
     {
+        bool openBoth = leftOpen && rightOpen;
+        bool openOneSide = leftOpen || rightOpen;
+
         if (count >= pointToWin)
             return k_winScore;
-        // Four in a row (almost win)
+        // Four in a row (almost win)*         
         if (count == pointToWin - 1)
         {
-            if (leftOpen || rightOpen)
+            if (openBoth)
+                return k_almostWinScore * 2 + 1;
+            if (openOneSide)
                 return k_almostWinScore;
-            else
-                return k_threeInRowScore;
+            return k_threeInRowScore;
         }
-        // Three in a row
+        // Three in a row*         
         if (count == pointToWin - 2)
         {
-            if (leftOpen && rightOpen)
-                return k_threeInRowScore;
-            else if (leftOpen || rightOpen)
-                return k_TwoInRowScore * 3;
+            if (openBoth)
+                return k_threeInRowScore * 3 + 1;
+            if (openOneSide)
+                return k_TwoInRowScore * 2 + 1;
         }
-        // Two in a row
+        // Two in a row*         
         if (count >= 2 && (leftOpen || rightOpen))
             return k_TwoInRowScore;
         return count;
     }
-    // Returns a bonus for being closer to the center of the board
+        // Returns a bonus for being closer to the center of the board
     private static int GetPositionBonus(int row, int col, int boardSize)
     {
         int center = boardSize / 2;
@@ -306,7 +310,7 @@ public class AIPlayer
         // Calculate the number of empty cells
         int emptyCells = (boardSize * boardSize) - occupiedCells;
         // Limit the number of candidate moves to a maximum of 25 for performance
-        int estimatedCandidates = Mathf.Min(25, emptyCells);
+        int estimatedCandidates = Mathf.Min(18, emptyCells);
         // Set a maximum number of nodes to avoid lag
         int maxNodes = 100000;
         int depth = 1;
