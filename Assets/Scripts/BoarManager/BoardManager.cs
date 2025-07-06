@@ -93,6 +93,7 @@ public class BoardManager : Singleton<BoardManager>
             playerLastRow = row;
             playerLastCol = column;
         }
+        AudioManager.Instance.XClick();
         PlacingCell(row, column, currentPlayer);
     }
 
@@ -110,6 +111,7 @@ public class BoardManager : Singleton<BoardManager>
         }
 
         int currentPlayer = 2; // AI is always player 2
+        AudioManager.Instance.OClick();
         PlacingCell(row, column, currentPlayer);
     }
 
