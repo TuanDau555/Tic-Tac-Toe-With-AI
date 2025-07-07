@@ -36,3 +36,6 @@ Tic-Tac-Toe-With-AI/
 ## Contribute
 
 Every Contribute, feedback or issues please create [issue](https://github.com/TuanDau555/Tic-Tac-Toe-With-AI/issues) or send pull request.
+
+## Contact
+Email: nguyenmtuan505@gmail.com
