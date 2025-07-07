@@ -1,5 +1,5 @@
 # Tic-Tac-Toe-With-AI
-A game project is made for AI subject at my school. This is a Tic-Tac-Toe game with PVP and PVE (play with AI) mode, developed by:
+A game project is made for AI subject at my school. This is a Tic-Tac-Toe game with PVP and PVE (play with AI) mode, developed by: <br>
 [TuanDau555](https://github.com/TuanDau555) (Owner, Technical Lead, UX). <br>
 [phanleon](https://github.com/phanleon) (UI). <br>
 [SpKenZ](https://github.com/SpKenZ) (Technical Support). <br>
