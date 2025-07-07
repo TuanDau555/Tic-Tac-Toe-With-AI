@@ -22,7 +22,7 @@ This project allows players to experience the classic game with challenges prese
    ```
 **Game download:**
 Currently in final testing for publishing to Itch.io...
-## Cấu trúc thư mục
+## Repo structure
 
 ```
 Tic-Tac-Toe-With-AI/
