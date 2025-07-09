@@ -1742,7 +1742,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   row: 6
-  column: 7
+  column: 6
   defaultImage: {fileID: 21300000, guid: 15e3d91ea474d0c428ac0ce84cb2109e, type: 3}
 --- !u!1 &2585636403904073896
 GameObject:
@@ -6478,7 +6478,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   row: 6
-  column: 6
+  column: 7
   defaultImage: {fileID: 21300000, guid: 15e3d91ea474d0c428ac0ce84cb2109e, type: 3}
 --- !u!1 &5671290545352099136
 GameObject:
