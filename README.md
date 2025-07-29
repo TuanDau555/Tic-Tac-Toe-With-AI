@@ -4,7 +4,8 @@ A game project is made for AI subject at my school. This is a Tic-Tac-Toe game w
 [phanleon](https://github.com/phanleon) (UI support). <br>
 [SpKenZ](https://github.com/SpKenZ) (Technical Support). <br>
 This project allows players to experience the classic game with challenges presented by AI or play with friend.
-
+## Note
+Go to Tuan-Core-Gameplay branch for latest updated
 ## Feature 
 - Playing Tic-Tac-Toe with AI or with your friends.
 - User-friendly, easy to use interface (Contact for Asset).
