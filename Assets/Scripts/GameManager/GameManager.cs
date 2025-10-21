@@ -135,7 +135,7 @@ public class GameManager : Singleton<GameManager>
         if (playerWin == 1)
         {
             resultText = "X Wins!";
-            GameOverUI.Instance.ShowGameOver(resultText, Color.green);
+            GameOverUI.Instance.ShowGameOver(resultText, Color.black);
         }
         else
         {
@@ -147,7 +147,7 @@ public class GameManager : Singleton<GameManager>
     private void AnnounceDraw()
     {
         resultText = "It's a Tie!";
-        GameOverUI.Instance.ShowGameOver(resultText, Color.yellow);
+        GameOverUI.Instance.ShowGameOver(resultText, Color.black);
     }
     #endregion
 

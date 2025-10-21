@@ -17,5 +17,9 @@ MonoBehaviour:
     prefab: {fileID: 17370157002487442, guid: 38e7bd7e23429ea418cff5d2013bce1f, type: 3}
   - boardSize: 5
     prefab: {fileID: 2158723495646081848, guid: 028b9e6013172714492ea5722b4e9409, type: 3}
+  - boardSize: 8
+    prefab: {fileID: 4771060304978028412, guid: 063715328612d5747a6032e8f40a1c74, type: 3}
   - boardSize: 11
     prefab: {fileID: 5896428744695907485, guid: 52212344798be3e4a98257a6b2fccaa3, type: 3}
+  - boardSize: 15
+    prefab: {fileID: 7895140351413466127, guid: b4500e64f455df3489d8ecdc88978893, type: 3}
